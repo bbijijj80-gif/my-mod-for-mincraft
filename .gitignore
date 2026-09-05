@@ -1,39 +1,55 @@
-```
-# Gradle
-.gradle/
-build/
-!gradle.properties
-!gradlew
-
-# Compiled Java files
+# Compiled and build artifacts
 *.class
-*.jar
-*.war
-*.ear
-
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.out
 # Dependencies
-libs/
-lib/
-
-# Logs
+venv/
+.venv/
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+target/
+.gradle/
+# Logs and temp files
 *.log
-
-# Temporary files
 *.tmp
-*.temp
-*~
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# IDE specific
-.idea/
+*.swp
+# Environment
+.env
+.env.local
+*.env.*
+# Editors
 .vscode/
-*.iml
-*.ipr
-*.iws
-
-# Local configuration
-local.properties
-```
+.idea/
+# Coverage
+coverage/
+htmlcov/
+.coverage
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst

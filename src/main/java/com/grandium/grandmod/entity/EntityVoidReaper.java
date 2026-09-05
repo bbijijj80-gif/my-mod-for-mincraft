@@ -1,5 +1,6 @@
 package com.grandium.grandmod.entity;
 
+import com.grandium.grandmod.item.ItemAnnihilatorBlade;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
@@ -7,9 +8,13 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.item.ItemTool;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
@@ -21,6 +26,9 @@ import javax.annotation.Nullable;
 
 public class EntityVoidReaper extends EntityMob
 {
+    private boolean hasBeenHitByAnnihilator = false;
+    private boolean isEnraged = false;
+
     public EntityVoidReaper(World world)
     {
         super(world);
@@ -75,12 +83,92 @@ public class EntityVoidReaper extends EntityMob
     @Override
     public boolean attackEntityFrom(DamageSource source, float amount)
     {
-        // Уменьшаем урон от всех источников на 50% для сложности
-        if (!source.isCreativePlayer())
+        // Игнорируем урон в творческом режиме для проверки
+        if (source.isCreativePlayer())
         {
-            amount *= 0.5F;
+            return super.attackEntityFrom(source, amount);
         }
-        return super.attackEntityFrom(source, amount);
+
+        // Проверяем, является ли источник атаки игроком
+        if (source.getTrueSource() instanceof EntityPlayer)
+        {
+            EntityPlayer player = (EntityPlayer) source.getTrueSource();
+            ItemStack heldItem = player.getHeldItemMainhand();
+
+            if (!heldItem.isEmpty())
+            {
+                // Проверка на Клинк Анигилятора
+                if (heldItem.getItem() instanceof ItemAnnihilatorBlade)
+                {
+                    if (!hasBeenHitByAnnihilator)
+                    {
+                        // Первый удар Клинком Анигилятора - ломаем меч и усиливаем босса
+                        hasBeenHitByAnnihilator = true;
+                        isEnraged = true;
+                        
+                        // Ломаем меч
+                        heldItem.setCount(0);
+                        player.setHeldItem(EntityEquipmentSlot.MAINHAND, ItemStack.EMPTY);
+                        
+                        // Усиливаем босса
+                        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1000.0D);
+                        this.setHealth(1000.0F); // Полное здоровье после усиления
+                        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(25.0D);
+                        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.35D);
+                        
+                        // Визуальный эффект
+                        this.world.setEntityState(this, (byte) 60);
+                        
+                        // Отменяем урон
+                        return false;
+                    }
+                    else
+                    {
+                        // Последующие удары Клинком Анигилятора не наносят урон
+                        return false;
+                    }
+                }
+
+                // Проверка на деревянные инструменты
+                boolean isWoodenTool = false;
+                
+                if (heldItem.getItem() instanceof ItemSword)
+                {
+                    ItemSword sword = (ItemSword) heldItem.getItem();
+                    if (sword.getMaterial() == ToolMaterial.WOOD)
+                    {
+                        isWoodenTool = true;
+                    }
+                }
+                else if (heldItem.getItem() instanceof ItemTool)
+                {
+                    ItemTool tool = (ItemTool) heldItem.getItem();
+                    if (tool.getMaterial() == ToolMaterial.WOOD)
+                    {
+                        isWoodenTool = true;
+                    }
+                }
+                else if (heldItem.getItem() == Items.STICK)
+                {
+                    // Палка тоже считается деревянным инструментом
+                    isWoodenTool = true;
+                }
+
+                if (isWoodenTool)
+                {
+                    // Деревянные инструменты наносят очень маленький урон (0.5 сердца = 1 единица)
+                    return super.attackEntityFrom(source, 1.0F);
+                }
+                else
+                {
+                    // Все остальные инструменты не наносят урон
+                    return false;
+                }
+            }
+        }
+
+        // Урон от других источников (лава, падение и т.д.) не работает
+        return false;
     }
 
     @Override
