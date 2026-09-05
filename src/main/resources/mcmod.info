@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "grandium",
+    "name": "Grandium Legends",
+    "description": "Adds ultra-rare crafting materials and the Annihilator Blade — a legendary sword that kills any mob in two hits.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["Grandium Team"],
+    "credits": "Minecraft Forge",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

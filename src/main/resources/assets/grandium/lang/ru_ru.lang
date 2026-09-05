@@ -1,0 +1,12 @@
+item.primal_dust.name=Первичная пыль
+item.void_shard.name=Осколок пустоты
+item.grandium_ingot.name=Слиток грандиума
+item.grandium_core.name=Ядро грандиума
+item.annihilator_blade.name=Клинок Анигилятора
+itemGroup.grandium=Grandium Legends
+
+item.primal_dust.desc=Сжатая сущность редчайших руд
+item.void_shard.desc=Фрагмент энергии пустоты
+item.grandium_ingot.desc=Легендарный металл, выкованный из пустоты
+item.grandium_core.desc=Сердце абсолютной силы
+item.annihilator_blade.desc=Убивает любого моба ровно за два удара

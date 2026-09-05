@@ -1,0 +1,12 @@
+item.primal_dust.name=Primal Dust
+item.void_shard.name=Void Shard
+item.grandium_ingot.name=Grandium Ingot
+item.grandium_core.name=Grandium Core
+item.annihilator_blade.name=Annihilator Blade
+itemGroup.grandium=Grandium Legends
+
+item.primal_dust.desc=Condensed essence of the rarest ores
+item.void_shard.desc=A fragment of void energy
+item.grandium_ingot.desc=Legendary metal forged from void
+item.grandium_core.desc=The heart of absolute power
+item.annihilator_blade.desc=Kills any mob in exactly two strikes
