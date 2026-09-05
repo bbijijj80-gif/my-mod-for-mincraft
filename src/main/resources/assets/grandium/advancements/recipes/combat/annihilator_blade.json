@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "grandium:annihilator_blade"
+    ]
+  },
+  "criteria": {
+    "has_grandium_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "grandium:grandium_core"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "grandium:annihilator_blade"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_grandium_core",
+      "has_the_recipe"
+    ]
+  ]
+}

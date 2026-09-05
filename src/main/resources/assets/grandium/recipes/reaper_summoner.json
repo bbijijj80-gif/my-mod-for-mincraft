@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PVP",
+    "VGV",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "grandium:primal_dust"
+    },
+    "V": {
+      "item": "grandium:void_shard"
+    },
+    "G": {
+      "item": "grandium:grandium_core"
+    }
+  },
+  "result": {
+    "item": "grandium:reaper_summoner",
+    "count": 1
+  }
+}
