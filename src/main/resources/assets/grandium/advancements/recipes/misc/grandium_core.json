@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "grandium:grandium_core"
+    ]
+  },
+  "criteria": {
+    "has_void_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "grandium:void_shard"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "grandium:grandium_core"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_void_shard",
+      "has_the_recipe"
+    ]
+  ]
+}
