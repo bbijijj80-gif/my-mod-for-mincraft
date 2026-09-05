@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PBP",
+    "ENE",
+    "PGP"
+  ],
+  "key": {
+    "P": {
+      "item": "grandium:primal_dust"
+    },
+    "B": {
+      "item": "minecraft:blaze_rod"
+    },
+    "E": {
+      "item": "minecraft:ender_pearl"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "G": {
+      "item": "minecraft:ghast_tear"
+    }
+  },
+  "result": {
+    "item": "grandium:void_shard",
+    "count": 1
+  }
+}

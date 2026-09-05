@@ -1,25 +1,39 @@
-# eclipse
-bin
-*.launch
-.settings
-.metadata
-.classpath
-.project
+```
+# Gradle
+.gradle/
+build/
+!gradle.properties
+!gradlew
 
-# idea
-out
+# Compiled Java files
+*.class
+*.jar
+*.war
+*.ear
+
+# Dependencies
+libs/
+lib/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE specific
+.idea/
+.vscode/
+*.iml
 *.ipr
 *.iws
-*.iml
-.idea
 
-# gradle
-build
-.gradle
-
-# other
-eclipse
-run
-
-# Files from Forge MDK
-forge*changelog.txt
+# Local configuration
+local.properties
+```

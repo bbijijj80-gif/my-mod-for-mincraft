@@ -104,10 +104,36 @@ def blade_texture():
     save("annihilator_blade", img)
 
 
+def summoner_texture():
+    img = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    # Dark void orb base
+    d.ellipse([2, 2, 13, 13], fill=(20, 5, 40, 255), outline=(80, 20, 100, 255))
+    # Swirling void energy
+    for i in range(8):
+        angle = math.radians(i * 45)
+        x1 = 8 + int(math.cos(angle) * 3)
+        y1 = 8 + int(math.sin(angle) * 3)
+        x2 = 8 + int(math.cos(angle) * 5)
+        y2 = 8 + int(math.sin(angle) * 5)
+        d.line([(x1, y1), (x2, y2)], fill=(150, 50, 200, 180), width=1)
+    # Glowing core
+    d.ellipse([5, 5, 10, 10], fill=(100, 20, 150, 255))
+    d.ellipse([6, 6, 9, 9], fill=(180, 80, 220, 255))
+    d.ellipse([7, 7, 8, 8], fill=(255, 200, 255, 255))
+    # Void sparks
+    img.putpixel((3, 8), (200, 100, 255, 255))
+    img.putpixel((12, 8), (200, 100, 255, 255))
+    img.putpixel((8, 3), (200, 100, 255, 255))
+    img.putpixel((8, 12), (200, 100, 255, 255))
+    save("reaper_summoner", img)
+
+
 if __name__ == "__main__":
     dust_texture()
     shard_texture()
     ingot_texture()
     core_texture()
     blade_texture()
+    summoner_texture()
     print("All textures generated.")

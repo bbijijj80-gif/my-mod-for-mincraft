@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "III",
+    " S "
+  ],
+  "key": {
+    "C": {
+      "item": "grandium:grandium_core"
+    },
+    "I": {
+      "item": "grandium:grandium_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "grandium:annihilator_blade",
+    "count": 1
+  }
+}

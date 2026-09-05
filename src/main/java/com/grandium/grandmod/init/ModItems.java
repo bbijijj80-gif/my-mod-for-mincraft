@@ -21,6 +21,7 @@ public class ModItems
     public static Item GRANDIUM_INGOT;
     public static Item GRANDIUM_CORE;
     public static Item ANNIHILATOR_BLADE;
+    public static Item REAPER_SUMMONER;
 
     public static void init()
     {
@@ -48,6 +49,11 @@ public class ModItems
                 .setRegistryName("annihilator_blade")
                 .setUnlocalizedName("annihilator_blade")
                 .setCreativeTab(ModCreativeTab.TAB);
+
+        REAPER_SUMMONER = new ItemReaperSummoner()
+                .setRegistryName("reaper_summoner")
+                .setUnlocalizedName("reaper_summoner")
+                .setCreativeTab(ModCreativeTab.TAB);
     }
 
     @SubscribeEvent
@@ -59,6 +65,7 @@ public class ModItems
         registry.register(GRANDIUM_INGOT);
         registry.register(GRANDIUM_CORE);
         registry.register(ANNIHILATOR_BLADE);
+        registry.register(REAPER_SUMMONER);
     }
 
     @SubscribeEvent
@@ -70,6 +77,7 @@ public class ModItems
         registerModel(GRANDIUM_INGOT);
         registerModel(GRANDIUM_CORE);
         registerModel(ANNIHILATOR_BLADE);
+        registerModel(REAPER_SUMMONER);
     }
 
     @SideOnly(Side.CLIENT)

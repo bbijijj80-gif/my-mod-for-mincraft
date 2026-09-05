@@ -3,11 +3,13 @@ package com.grandium.grandmod;
 import com.grandium.grandmod.init.ModItems;
 import com.grandium.grandmod.init.ModRecipes;
 import com.grandium.grandmod.handler.CombatHandler;
+import com.grandium.grandmod.entity.EntityVoidReaper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import org.apache.logging.log4j.Logger;
 
 @Mod(
@@ -29,6 +31,21 @@ public class GrandiumMod
     {
         logger = event.getModLog();
         ModItems.init();
+        
+        // Регистрируем сущность босса
+        EntityRegistry.registerModEntity(
+                EntityVoidReaper.class,
+                "void_reaper",
+                "grandium:void_reaper",
+                1,
+                this,
+                80,
+                3,
+                true,
+                0x1a1a2e,
+                0x4a0e4e
+        );
+        
         MinecraftForge.EVENT_BUS.register(new CombatHandler());
     }
 
